@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>ID Carrière – Lecteur</title>
+<style>
+body {
+    background:#0b1d3a;
+    color:white;
+    font-family:Arial;
+    padding:20px;
+}
+input, button {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+    font-size:16px;
+}
+button {
+    background:#1e90ff;
+    border:none;
+    color:white;
+}
+.card {
+    background:#111;
+    padding:15px;
+    margin-top:15px;
+    text-align:center;
+    border-radius:8px;
+}
+img {
+    max-width:120px;
+    margin:10px;
+}
+</style>
+</head>
+<body>
+
+<h2>🔎 Lecture d’ID Carrière</h2>
+
+<input type="number" id="idInput" placeholder="Entre l'ID (ex: 703079)">
+<button onclick="lireID()">Afficher</button>
+
+<div id="result"></div>
+
+<script>
+const database = {
+    "703079": {
+        club: "Panaok",
+        logo: "https://i.ibb.co/bVW9z7p/Cut-Paste-2026-01-27-19-41-50-662.webp",
+        pays: "Canada",
+        flag: "https://i.ibb.co/G4B2Lpmj/Ca.webp"
+    }
+};
+
+function lireID() {
+    let id = document.getElementById("idInput").value;
+    let result = document.getElementById("result");
+
+    if (database[id]) {
+        let data = database[id];
+        result.innerHTML = `
+            <div class="card">
+                <h3>ID : ${id}</h3>
+                <img src="${data.logo}">
+                <h2>${data.club}</h2>
+                <img src="${data.flag}">
+                <p>${data.pays}</p>
+            </div>
+        `;
+    } else {
+        result.innerHTML = "<p>❌ ID non trouvé</p>";
+    }
+}
+</script>
+
+</body>
+</html>
+    
